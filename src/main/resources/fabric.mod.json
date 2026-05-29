@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "admin-panel",
+  "version": "${version}",
+  "name": "Admin Panel",
+  "description": "A comprehensive admin panel mod with role-based permissions",
+  "authors": [
+    "AdminPanel"
+  ],
+  "contact": {
+    "homepage": "https://github.com/Offbrand-Eminem/admin-panel",
+    "sources": "https://github.com/Offbrand-Eminem/admin-panel",
+    "issues": "https://github.com/Offbrand-Eminem/admin-panel/issues"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.adminpanel.AdminPanelMod"
+    ],
+    "client": [
+      "com.adminpanel.AdminPanelClient"
+    ]
+  },
+  "mixins": [
+  ],
+  "depends": {
+    "fabricloader": ">=0.18.0",
+    "minecraft": ">=1.21.11",
+    "java": ">=21"
+  },
+  "custom": {
+    "modupdater": {
+      "strategy": "github",
+      "repository": "Offbrand-Eminem/admin-panel",
+      "preferredVersion": "release"
+    }
+  }
+}

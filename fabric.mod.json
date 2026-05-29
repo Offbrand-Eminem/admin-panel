@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "admin-panel",
+  "version": "1.0.0",
+  "name": "Admin Panel",
+  "description": "A comprehensive admin panel mod with role-based permissions",
+  "authors": [
+    "AdminPanel"
+  ],
+  "contact": {
+    "homepage": "https://github.com/adminpanel",
+    "sources": "https://github.com/adminpanel/admin-panel"
+  },
+  "license": "MIT",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "com.adminpanel.AdminPanelMod"
+    ]
+  },
+  "mixins": [
+    "adminpanel.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": "\u003e\u003d0.18.0",
+    "minecraft": "~1.21.11",
+    "java": "\u003e\u003d21",
+    "fabric-api": "*"
+  },
+  "jars": [
+    {
+      "file": "META-INF/jars/fabric-api-0.141.1+1.21.11.jar"
+    },
+    {
+      "file": "META-INF/jars/gson-2.10.1.jar"
+    }
+  ]
+}

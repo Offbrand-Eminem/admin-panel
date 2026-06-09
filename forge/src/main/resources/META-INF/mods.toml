@@ -1,0 +1,24 @@
+modLoader="javafml"
+loaderVersion="[61,)"
+license="MIT"
+
+[[mods]]
+modId="admin_panel"
+version="${version}"
+displayName="Admin Panel"
+authors="AdminPanel"
+description="A comprehensive admin panel mod with role-based permissions"
+
+[[dependencies.admin_panel]]
+modId="forge"
+mandatory=true
+versionRange="[61,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.admin_panel]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.21.11,)"
+ordering="NONE"
+side="BOTH"

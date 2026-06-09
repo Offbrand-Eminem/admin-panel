@@ -23,6 +23,8 @@
     ]
   },
   "mixins": [
+    "chatcontrol.mixins.json",
+    "adminpanel.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.18.0",

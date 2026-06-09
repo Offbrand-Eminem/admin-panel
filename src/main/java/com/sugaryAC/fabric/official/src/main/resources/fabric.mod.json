@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "sugaryac-fabric-official",
+  "version": "${version}",
+  "name": "sugaryAC (Fabric, official mappings)",
+  "description": "sugaryAC anticheat for Minecraft 26.1.X. Official-mapped platform compiled directly against the deobfuscated 26.X jar, sibling to fabric-intermediary, which covers 1.16.1-1.21.11. Per-version submodules contribute grim26MainLoad entrypoints.",
+  "license": "GPLv3",
+  "environment": "server",
+  "entrypoints": {
+    "preLaunch": [
+      "ac.grim.grimac.platform.fabric.sugaryACFabricOfficialEntryPoint"
+    ],
+    "main": [
+      "ac.grim.grimac.platform.fabric.sugaryACFabricOfficialEntryPoint"
+    ]
+  },
+  "mixins": [
+    "sugaryac.mixins.json"
+  ],
+  "accessWidener": "sugaryac.accesswidener",
+  "custom": {
+    "loom:injected_interfaces": {
+      "net/minecraft/world/level/Level": [
+        "ac/sugaryac/sugaryacac/platform/api/world/PlatformWorld"
+      ],
+      "net/minecraft/world/entity/Entity": [
+        "ac/sugaryac/sugaryacac/platform/fabric/inject/FabricEntityHandle"
+      ],
+      "net/minecraft/server/level/ServerPlayer": [
+        "ac/sugaryac/sugaryacac/platform/fabric/inject/FabricServerPlayerHandle"
+      ],
+      "net/minecraft/server/MinecraftServer": [
+        "ac/sugaryac/sugaryacac/platform/fabric/inject/FabricMinecraftServerHandle"
+      ],
+      "net/minecraft/commands/CommandSourceStack": [
+        "ac/sugaryac/sugaryacac/platform/api/sender/Sender"
+      ]
+    }
+  },
+  "depends": {
+    "minecraft": ">=26.1.2 <26.2",
+    "java": ">=25",
+    "fabricloader": ">=0.19",
+    "fabric-lifecycle-events-v1": "*",
+    "packetevents": "*"
+  },
+  "recommends": {
+    "luckperms": "*"
+  }
+}

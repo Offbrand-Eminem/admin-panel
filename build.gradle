@@ -20,12 +20,22 @@ repositories {
 
 dependencies {
     minecraft "com.mojang:minecraft:1.21.11"
-    mappings "net.fabricmc:yarn:1.21.11+build.4:v2"
+    mappings loom.officialMojangMappings()
     modImplementation "net.fabricmc:fabric-loader:0.18.1"
 
     modImplementation include("net.fabricmc.fabric-api:fabric-api:0.141.1+1.21.11")
 
     modImplementation include("com.google.code.gson:gson:2.10.1")
+
+    compileOnly "com.google.code.findbugs:jsr305:3.0.2"
+}
+
+sourceSets {
+    main {
+        java {
+            exclude "com/sugaryAC/**"
+        }
+    }
 }
 
 processResources {

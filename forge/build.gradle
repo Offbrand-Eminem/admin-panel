@@ -1,0 +1,89 @@
+plugins {
+    id 'java'
+    id 'net.minecraftforge.gradle' version '[7.0.3,8)'
+}
+
+version = rootProject.version
+group = rootProject.group
+
+base {
+    archivesName = 'admin-panel-forge'
+}
+
+repositories {
+    minecraft.mavenizer(it)
+    maven fg.forgeMaven
+    maven fg.minecraftLibsMaven
+    mavenCentral()
+    maven {
+        name = 'Forge'
+        url = 'https://maven.minecraftforge.net/'
+    }
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+minecraft {
+    mappings channel: 'official', version: '1.21.11'
+}
+
+dependencies {
+    implementation minecraft.dependency('net.minecraftforge:forge:1.21.11-61.1.8')
+    implementation 'net.minecraftforge:eventbus:7.0.1'
+    implementation 'com.google.code.gson:gson:2.10.1'
+    compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['../src/main/java', 'src/main/java']
+            exclude 'com/sugaryAC/**'
+            exclude 'com/adminpanel/com/adminpanel/AdminPanelMod.java'
+            exclude 'com/adminpanel/com/adminpanel/AdminPanelClient.java'
+            exclude 'com/adminpanel/com/adminpanel/network/OpenGuiPayload.java'
+            exclude 'com/adminpanel/com/adminpanel/commands/AdminUICommand.java'
+            exclude 'com/adminpanel/de/rawnet/playerfreeze/PlayerFreezePlugin.java'
+            exclude 'com/adminpanel/me/declipsonator/chatcontrol/ChatControl.java'
+            exclude 'com/adminpanel/me/drex/vanish/api/VanishEvents.java'
+        }
+        resources {
+            srcDirs = ['../src/main/resources', 'src/main/resources']
+            exclude 'fabric.mod.json'
+        }
+    }
+}
+
+processResources {
+    inputs.property 'version', project.version
+
+    filesMatching('META-INF/mods.toml') {
+        expand 'version': project.version
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 21
+}
+
+jar {
+    archiveClassifier = 'forge'
+    manifest {
+        attributes([
+            'Specification-Title': 'Admin Panel',
+            'Specification-Vendor': 'AdminPanel',
+            'Specification-Version': '1',
+            'Implementation-Title': project.name,
+            'Implementation-Version': project.version,
+            'Implementation-Vendor': 'AdminPanel',
+            'MixinConfigs': 'chatcontrol.mixins.json,adminpanel.mixins.json'
+        ])
+    }
+    from('../LICENSE') {
+        rename { "${it}_${project.base.archivesName.get()}" }
+    }
+}

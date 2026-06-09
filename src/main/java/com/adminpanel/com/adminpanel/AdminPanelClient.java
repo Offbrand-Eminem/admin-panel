@@ -12,7 +12,8 @@ import net.minecraft.network.chat.Component;
 public class AdminPanelClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
-        // Register packet handler for opening GUI
+        OpenGuiPayload.registerS2C();
+
         ClientPlayNetworking.registerGlobalReceiver(OpenGuiPayload.ID, (payload, context) -> {
             context.client().execute(() -> {
                 if (context.client().player != null) {
@@ -21,29 +22,22 @@ public class AdminPanelClient implements ClientModInitializer {
             });
         });
 
-        // Register client-side commands as backup
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, registryAccess) -> {
             dispatcher.register(ClientCommandManager.literal("adminui")
-                .executes(context -> {
-                    Minecraft client = context.getSource().getClient();
-                    if (client.player != null) {
-                        client.setScreen(new AdminPanelScreen());
-                        context.getSource().sendFeedback(Component.literal("§aOpening Admin Panel GUI"));
-                    }
-                    return 1;
-                })
+                .executes(context -> openLocal(context.getSource().getClient()))
             );
 
             dispatcher.register(ClientCommandManager.literal("gui")
-                .executes(context -> {
-                    Minecraft client = context.getSource().getClient();
-                    if (client.player != null) {
-                        client.setScreen(new AdminPanelScreen());
-                        context.getSource().sendFeedback(Component.literal("§aOpening Admin Panel GUI"));
-                    }
-                    return 1;
-                })
+                .executes(context -> openLocal(context.getSource().getClient()))
             );
         });
+    }
+
+    private static int openLocal(Minecraft client) {
+        if (client.player != null) {
+            client.setScreen(new AdminPanelScreen());
+            client.player.displayClientMessage(Component.literal("Opening Admin Panel GUI"), false);
+        }
+        return 1;
     }
 }

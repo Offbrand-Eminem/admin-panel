@@ -11,7 +11,6 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v2.CommandRegistrationCallback;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayConnectionEvents;
-import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -27,8 +26,7 @@ public class AdminPanelMod implements ModInitializer {
     public void onInitialize() {
         LOGGER.info("Admin Panel Mod v{} is initializing...", VERSION);
 
-        // Register networking payload type
-        PayloadTypeRegistry.playS2C().register(OpenGuiPayload.ID, OpenGuiPayload.CODEC);
+        OpenGuiPayload.registerS2C();
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
             configManager = new ConfigManager(server);

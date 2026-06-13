@@ -13,13 +13,10 @@
     "issues": "https://github.com/Offbrand-Eminem/admin-panel/issues"
   },
   "license": "MIT",
-  "environment": "*",
+  "environment": "server",
   "entrypoints": {
     "main": [
       "com.adminpanel.AdminPanelMod"
-    ],
-    "client": [
-      "com.adminpanel.AdminPanelClient"
     ]
   },
   "mixins": [

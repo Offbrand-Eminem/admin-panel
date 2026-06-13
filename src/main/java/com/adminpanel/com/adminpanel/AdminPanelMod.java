@@ -3,7 +3,6 @@ package com.adminpanel;
 import com.adminpanel.config.ConfigManager;
 import com.adminpanel.permission.PermissionManager;
 import com.adminpanel.commands.*;
-import com.adminpanel.network.OpenGuiPayload;
 import de.rawnet.playerfreeze.PlayerFreezePlugin;
 import me.declipsonator.chatcontrol.ChatControl;
 import me.drex.vanish.VanishMod;
@@ -25,8 +24,6 @@ public class AdminPanelMod implements ModInitializer {
     @Override
     public void onInitialize() {
         LOGGER.info("Admin Panel Mod v{} is initializing...", VERSION);
-
-        OpenGuiPayload.registerS2C();
 
         ServerLifecycleEvents.SERVER_STARTING.register(server -> {
             configManager = new ConfigManager(server);

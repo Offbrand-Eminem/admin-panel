@@ -7,6 +7,7 @@ modId="admin_panel"
 version="${version}"
 displayName="Admin Panel"
 authors="AdminPanel"
+displayTest="IGNORE_SERVER_VERSION"
 description="A comprehensive admin panel mod with role-based permissions"
 
 [[dependencies.admin_panel]]

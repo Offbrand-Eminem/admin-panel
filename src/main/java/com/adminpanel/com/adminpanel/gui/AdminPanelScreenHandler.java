@@ -57,7 +57,7 @@ public class AdminPanelScreenHandler extends AbstractContainerMenu {
     private final String targetName;
     
     public AdminPanelScreenHandler(int syncId, Inventory playerInventory) {
-        this(syncId, playerInventory, null);
+        this(syncId, playerInventory, (String) null);
     }
 
     public AdminPanelScreenHandler(int syncId, Inventory playerInventory, String targetName) {
@@ -144,7 +144,7 @@ public class AdminPanelScreenHandler extends AbstractContainerMenu {
         player.closeContainer();
         CommandSourceStack source = player.createCommandSourceStack();
         try {
-            player.server.getCommands().getDispatcher().execute(command, source);
+            source.getServer().getCommands().getDispatcher().execute(command, source);
         } catch (CommandSyntaxException exception) {
             player.displayClientMessage(Component.literal("Admin UI command failed: " + exception.getMessage()), false);
         }

@@ -12,7 +12,7 @@
     "sources": "https://github.com/adminpanel/admin-panel"
   },
   "license": "MIT",
-  "environment": "*",
+  "environment": "server",
   "entrypoints": {
     "main": [
       "com.adminpanel.AdminPanelMod"

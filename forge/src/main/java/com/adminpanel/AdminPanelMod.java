@@ -30,7 +30,6 @@ import com.adminpanel.commands.UnmuteCommand;
 import com.adminpanel.commands.VanishCommand;
 import com.adminpanel.commands.WeatherCommand;
 import com.adminpanel.config.ConfigManager;
-import com.adminpanel.network.ForgeOpenGuiPacket;
 import com.adminpanel.permission.PermissionManager;
 import de.rawnet.playerfreeze.PlayerFreezePlugin;
 import me.declipsonator.chatcontrol.ChatControl;
@@ -62,7 +61,6 @@ public class AdminPanelMod {
     public AdminPanelMod() {
         LOGGER.info("Admin Panel Forge Mod v{} is initializing...", VERSION);
         MinecraftForge.EVENT_BUS.register(this);
-        ForgeOpenGuiPacket.register();
 
         new ChatControl().onInitialize();
         PlayerFreezePlugin.initialize();

@@ -44,9 +44,6 @@ sourceSets {
             srcDirs = ['../src/main/java', 'src/main/java']
             exclude 'com/sugaryAC/**'
             exclude 'com/adminpanel/com/adminpanel/AdminPanelMod.java'
-            exclude 'com/adminpanel/com/adminpanel/AdminPanelClient.java'
-            exclude 'com/adminpanel/com/adminpanel/network/OpenGuiPayload.java'
-            exclude 'com/adminpanel/com/adminpanel/commands/AdminUICommand.java'
             exclude 'com/adminpanel/de/rawnet/playerfreeze/PlayerFreezePlugin.java'
             exclude 'com/adminpanel/me/declipsonator/chatcontrol/ChatControl.java'
             exclude 'com/adminpanel/me/drex/vanish/api/VanishEvents.java'
